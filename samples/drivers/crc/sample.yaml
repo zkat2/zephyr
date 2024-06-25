@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: Apache-2.0
+
+sample:
+  name: crc_sample
+  description: Sample application demonstrating CRC driver usage
+tests:
+  crc_sample.test:
+    integration_platforms:
+      - nucleo_g474re
+    platform_allow:
+      - nucleo_g474re
+    platform_exclude:
+      - native_posix
+
+    tags:
+      - drivers
+      - crc

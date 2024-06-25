@@ -1,0 +1,31 @@
+# Copyright (c) 2024 Brill Power Ltd.
+# SPDX-License-Identifier: Apache-2.0
+
+menuconfig CRC_HW
+	bool "CRC HW acceleration"
+
+if CRC_HW
+
+module = CRC_HW
+module-str = CRC_HW
+source "subsys/logging/Kconfig.template.log_config"
+
+config CRC_INIT_PRIORITY
+	int "CRC init priority"
+	default KERNEL_INIT_PRIORITY_DEVICE
+	help
+	  CRC driver device initialization priority.
+
+config CRC_TIMEOUT_MS
+	int "Timeout period for STM32 CRC instance (milliseconds)"
+	range 0 65535
+	default 0
+	help
+	  Timeout period (milliseconds) for use when locking the CRC instance.
+	  Values:
+	    0 to 65535 - Timeout in milliseconds
+	    >10000 - Treated as K_FOREVER
+
+source "drivers/crc/Kconfig.stm32"
+
+endif # CRC_HW

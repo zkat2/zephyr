@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: Apache-2.0
+
+tests:
+  drivers.crc:
+    integration_platforms:
+      - nucleo_g474re
+    platform_allow: nucleo_g474re
+    platform_exclude: native_posix
+    tags:
+      - drivers
+      - crc
